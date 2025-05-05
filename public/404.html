@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ed Insights AI</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // Modified to work with the edinsights-web repository
+      
+      // This script works for both the root domain and the /edinsights-web/ subpath
+      var segmentCount = 0;
+      var repoName = 'edinsights-web';
+      
+      var l = window.location;
+      if (l.hostname !== 'localhost') {
+        // Check if we're in the GitHub Pages repo path
+        if (l.pathname.indexOf('/' + repoName + '/') === 0) {
+          segmentCount = 1; // Keep the repo name in the path
+        }
+      }
+      
+      var path = l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/';
+      var remainingPath = l.pathname.slice(path.length);
+      var href = path + '#/' + remainingPath + l.search;
+      l.replace(href);
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+</html>
