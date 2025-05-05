@@ -5,7 +5,7 @@
 1. Clone the repository
    ```sh
    git clone <repository-url>
-   cd data-driven-arena-insights
+   cd edinsights-web
    ```
 
 2. Install dependencies
@@ -26,6 +26,26 @@
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview the production build locally
 - `npm run deploy` - Deploy to GitHub Pages
+
+## Updating Dependencies
+
+To keep the project dependencies up to date:
+
+1. Update the browserslist database:
+   ```sh
+   npx update-browserslist-db@latest
+   ```
+
+2. Update minor and patch versions (safer updates):
+   ```sh
+   npm update
+   ```
+
+3. For major version updates (may include breaking changes):
+   ```sh
+   npx npm-check-updates -u
+   npm install
+   ```
 
 ## Technologies
 
