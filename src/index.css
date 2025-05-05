@@ -1,0 +1,99 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 33% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 84% 5%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 197 78% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 151 76% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 84% 5%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline font-bold;
+  }
+
+  .data-text {
+    @apply font-mono;
+  }
+  
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(10, 17, 40, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(10, 17, 40, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+  
+  .highlight-button {
+    @apply relative overflow-hidden bg-highlight text-white px-6 py-3 rounded-md font-headline font-semibold 
+    hover:shadow-lg transition-all duration-300 before:content-[''] before:absolute before:top-0 before:left-0 
+    before:w-full before:h-full before:bg-white/20 before:translate-x-full hover:before:translate-x-0 
+    before:transition-transform before:duration-300;
+  }
+  
+  .accent-button {
+    @apply relative overflow-hidden bg-accent text-white px-6 py-3 rounded-md font-headline font-semibold 
+    hover:shadow-lg transition-all duration-300 before:content-[''] before:absolute before:top-0 before:left-0 
+    before:w-full before:h-full before:bg-white/20 before:translate-x-full hover:before:translate-x-0 
+    before:transition-transform before:duration-300;
+  }
+  
+  .card-effect {
+    @apply relative bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 
+    after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-1 after:bg-secondary
+    hover:after:w-full after:transition-all after:duration-300;
+  }
+  
+  .data-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-secondary opacity-0;
+    animation: data-dot 3s infinite both;
+  }
+  
+  @keyframes data-dot {
+    0% { opacity: 0; transform: translateY(0); }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(20px); }
+  }
+}
