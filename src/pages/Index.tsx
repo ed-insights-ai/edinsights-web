@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { BarChart, LineChart, LayoutDashboard } from "lucide-react";
 import Header from "@/components/Header";
@@ -20,9 +19,9 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-headline leading-tight">
-                Empowered Data <br />
-                <span className="text-secondary">Artificial Intelligence</span> <br />
-                Real Results
+                <span className="text-highlight">E</span><span className="text-gray-500">mpowered</span><span className="text-highlight">  D</span><span className="text-gray-500">ata</span> <br />
+                <span className="text-highlight">AI</span><span className="text-secondary"> Insights</span> <br />
+                <span className="text-gray-500">Real Results</span>
               </h1>
               <p className="text-xl mb-8 text-gray-700 max-w-xl">
                 Transforming NCAA soccer data into winning insights through cutting-edge AI technology.
