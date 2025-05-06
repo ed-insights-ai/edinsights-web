@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react()
     ],
-    // Use the correct base path depending on environment
+    // Ensure the base path is correctly set for GitHub Pages deployment
     base: isProd ? "/edinsights-web/" : "/",
     resolve: {
       alias: {
