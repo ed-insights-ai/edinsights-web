@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -14,6 +13,12 @@ const Opportunities = () => {
       {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-20 bg-primary text-white relative overflow-hidden">
         <DataDots className="opacity-30" />
+        {/* Position Filled Banner */}
+        <div className="absolute top-0 right-0 overflow-hidden w-40 h-40 z-20">
+          <div className="bg-accent text-white font-bold text-lg py-2 text-center w-56 transform rotate-45 translate-x-2 translate-y-12 shadow-lg">
+            Signed
+          </div>
+        </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 font-headline">Join the Starting Lineup</h1>
@@ -23,7 +28,7 @@ const Opportunities = () => {
             <div className="flex justify-center space-x-4">
               <div className="bg-white/10 backdrop-blur-sm px-4 py-3 rounded-lg">
                 <span className="font-mono font-bold text-2xl text-highlight">$10,000</span>
-                <span className="text-white/80 ml-2">Potential Value</span>
+                <span className="text-white/80 ml-2">Potential Earnings</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-4 py-3 rounded-lg">
                 <span className="font-mono font-bold text-2xl text-accent">10</span>
@@ -145,7 +150,7 @@ const Opportunities = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <SectionHeading 
             title="Compensation Structure" 
-            subtitle="A performance-based package worth up to $10,000 in value"
+            subtitle="A performance-based compensation package up to $10,000"
           />
           
           <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
@@ -176,7 +181,7 @@ const Opportunities = () => {
             </div>
             
             <div className="mt-8 pt-8 border-t border-gray-100">
-              <h4 className="font-headline font-bold text-xl mb-4">Performance Bonuses</h4>
+              <h4 className="font-headline font-bold text-xl mb-4">Performance-Based Cash Bonuses</h4>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <div className="bg-gray-50 p-4 rounded-lg">
@@ -196,7 +201,7 @@ const Opportunities = () => {
               </div>
               
               <div className="mt-8">
-                <h4 className="font-headline font-bold text-xl mb-4">Additional Benefits</h4>
+                <h4 className="font-headline font-bold text-xl mb-4">Provided Tools & Subscriptions</h4>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="bg-gray-50 p-4 rounded-lg">
@@ -308,21 +313,28 @@ const Opportunities = () => {
         <DataDots className="opacity-30" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-headline">Ready to Join Our Team?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-headline">Position Has Been Filled</h2>
+            <div className="bg-accent/20 backdrop-blur-sm p-4 mb-8 rounded-lg inline-block">
+              <p className="text-xl font-semibold">
+                This position has been filled.
+              </p>
+              <p className="text-white/80 mt-2">
+                Work through the tasks yourself in our <a href="https://github.com/ed-insights-ai/edinsights-intern" className="text-accent underline hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">open source repository</a>.
+              </p>
+            </div>
+            
             <p className="text-xl mb-8 text-white/80">
-              Apply today for our Data Science Python Developer Internship and help transform the world of sports analytics.
+              Our Data Science Python Developer Internship program helps transform the world of sports analytics.
             </p>
             
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg inline-block text-left">
-              <h3 className="text-2xl font-bold mb-4 font-headline">How to Apply</h3>
+              <h3 className="text-2xl font-bold mb-4 font-headline">Contact Information</h3>
               <p className="mb-6 text-white/80">
-                Send your resume, GitHub profile, and a brief statement of interest to:
+                For questions about future openings, please email:
               </p>
-              
               <div className="bg-white/20 p-4 rounded-md text-center mb-6">
                 <span className="font-mono font-bold text-xl">founder@edinsights.ai</span>
               </div>
-              
               <p className="text-white/80 text-sm">
                 Please include "NCAA Soccer Analytics Internship" in the subject line. Applications are reviewed on a rolling basis.
               </p>
