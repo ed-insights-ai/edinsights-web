@@ -28,7 +28,7 @@ const Opportunities = () => {
             <div className="flex justify-center space-x-4">
               <div className="bg-white/10 backdrop-blur-sm px-4 py-3 rounded-lg">
                 <span className="font-mono font-bold text-2xl text-highlight">$10,000</span>
-                <span className="text-white/80 ml-2">Potential Value</span>
+                <span className="text-white/80 ml-2">Potential Earnings</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-4 py-3 rounded-lg">
                 <span className="font-mono font-bold text-2xl text-accent">10</span>
@@ -150,7 +150,7 @@ const Opportunities = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <SectionHeading 
             title="Compensation Structure" 
-            subtitle="A performance-based package worth up to $10,000 in value"
+            subtitle="A performance-based compensation package up to $10,000"
           />
           
           <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
@@ -181,7 +181,7 @@ const Opportunities = () => {
             </div>
             
             <div className="mt-8 pt-8 border-t border-gray-100">
-              <h4 className="font-headline font-bold text-xl mb-4">Performance Bonuses</h4>
+              <h4 className="font-headline font-bold text-xl mb-4">Performance-Based Cash Bonuses</h4>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <div className="bg-gray-50 p-4 rounded-lg">
@@ -201,7 +201,7 @@ const Opportunities = () => {
               </div>
               
               <div className="mt-8">
-                <h4 className="font-headline font-bold text-xl mb-4">Additional Benefits</h4>
+                <h4 className="font-headline font-bold text-xl mb-4">Provided Tools & Subscriptions</h4>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="bg-gray-50 p-4 rounded-lg">
@@ -316,10 +316,10 @@ const Opportunities = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-headline">Position Has Been Filled</h2>
             <div className="bg-accent/20 backdrop-blur-sm p-4 mb-8 rounded-lg inline-block">
               <p className="text-xl font-semibold">
-                Thank you for your interest! This position has been filled.
+                This position has been filled.
               </p>
               <p className="text-white/80 mt-2">
-                Please check back for future opportunities.
+                Work through the tasks yourself in our <a href="https://github.com/ed-insights-ai/edinsights-intern" className="text-accent underline hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">open source repository</a>.
               </p>
             </div>
             
