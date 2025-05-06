@@ -15,7 +15,7 @@ const About = () => {
         <DataDots className="opacity-30" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 font-headline">About ED-Insights AI</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 font-headline">About ED Insights AI</h1>
             <p className="text-xl mb-0 text-white/80 max-w-2xl mx-auto">
               Transforming the world of sports analytics through innovative AI solutions.
             </p>
@@ -35,7 +35,7 @@ const About = () => {
               />
               
               <p className="text-gray-600 mb-6">
-                At ED-Insights AI, we believe that the future of sports lies at the intersection of athletic performance and advanced analytics. Our mission is to transform raw sports data into actionable insights that drive performance, strategy, and results.
+                At ED Insights AI, we believe that the future of sports lies at the intersection of athletic performance and advanced analytics. Our mission is to transform raw sports data into actionable insights that drive performance, strategy, and results.
               </p>
               
               <p className="text-gray-600 mb-6">

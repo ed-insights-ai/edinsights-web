@@ -24,7 +24,7 @@ const Home = () => {
                 <span className="text-gray-500">Real Results</span>
               </h1>
               <p className="text-xl mb-8 text-gray-700 max-w-xl">
-                Transforming NCAA soccer data into winning insights through cutting-edge AI technology.
+                Transforming sports data into winning insights through cutting-edge AI technology.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/opportunities" className="highlight-button">
@@ -138,7 +138,7 @@ const Home = () => {
                     </div>
                     <div>
                       <h4 className="font-mono text-lg mb-1">Python & AI</h4>
-                      <p className="text-white/80">Utilizing the power of Python and advanced AI models to extract meaningful patterns from massive datasets.</p>
+                      <p className="text-white/80">Utilizing the power of Python and advanced AI models to extract data from scattered locations.</p>
                     </div>
                   </div>
                   
@@ -157,8 +157,8 @@ const Home = () => {
                       <div className="w-2 h-2 rounded-full bg-highlight"></div>
                     </div>
                     <div>
-                      <h4 className="font-mono text-lg mb-1">Real-time Processing</h4>
-                      <p className="text-white/80">Instant data processing capabilities that deliver insights during matches, not just in post-game analysis.</p>
+                      <h4 className="font-mono text-lg mb-1">Pattern Detection</h4>
+                      <p className="text-white/80">AI driven analysis uncovers hidden relationships and predictive trends across diverse competitive contexts.</p>
                     </div>
                   </div>
                 </div>
@@ -197,6 +197,7 @@ const Home = () => {
                       <div className="w-16 h-16 bg-highlight/20 rounded-full flex items-center justify-center shrink-0">
                         <span className="font-mono font-bold text-xl">03</span>
                       </div>
+                      <div className="h-16 w-1 bg-gradient-to-b from-highlight to-transparent mx-4"></div>
                       <div>
                         <h4 className="font-mono text-lg mb-1">Actionable Insights</h4>
                         <p className="text-white/80">Transforming complex data into clear, actionable recommendations.</p>

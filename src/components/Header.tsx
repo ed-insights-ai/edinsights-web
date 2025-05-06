@@ -47,7 +47,7 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
             <div className="flex items-baseline">
-              <span className="text-xl sm:text-2xl font-bold text-gray-500">ED-Insights</span>
+              <span className="text-xl sm:text-2xl font-bold text-gray-500">ED Insights</span>
               <span className="text-xl sm:text-2xl font-bold text-highlight">.AI</span>
             </div>
           </Link>
