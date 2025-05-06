@@ -1,4 +1,4 @@
-# ED Insights AI Web Site
+# EDInsights.AI Web Site
 
 ## Development Setup
 
