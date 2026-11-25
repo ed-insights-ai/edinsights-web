@@ -817,7 +817,6 @@ footer .wrap { padding-block: 1.75rem; }
 <script>
 (() => {
   if (!('IntersectionObserver' in window) || !matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
-  const watch = [['.usmap', '.usmap'], ['.match', '.match'], ['.dk-chat', '.dk-chat'], ['.dk-page svg', '.dk-page'], ['.term-body', '.term']];
   const chat = document.querySelector('.dk-chat');
   if (!(window.CSS && CSS.registerProperty)) document.documentElement.classList.add('no-clock');
   let asked = null;
@@ -825,28 +824,40 @@ footer .wrap { padding-block: 1.75rem; }
     entries.forEach((e) => {
       if (e.intersectionRatio < 0.95) return;
       e.target.closest('.match').classList.remove('is-held');
-      play.disconnect();
+      play.unobserve(e.target);
     });
   }, { threshold: 0.95 });
+  const start = (el) => {
+    if (el.matches('.dk-chat')) {
+      if (el.dataset.settled) return;
+      asked = performance.now();
+    }
+    if (el.matches('.dk-page')) {
+      if (asked === null) { if (chat) chat.dataset.settled = '1'; return; }
+      el.style.setProperty('--wait', Math.max(0, asked + 4000 - performance.now()) / 1000 + 's');
+    }
+    if (el.matches('.match')) { el.classList.add('is-held'); el.querySelectorAll('.mt').forEach((t) => play.observe(t)); }
+    el.classList.add('is-in');
+  };
+  const reset = (el) => {
+    el.classList.remove('is-in', 'is-held');
+    if (el.matches('.dk-chat')) { asked = null; delete el.dataset.settled; }
+    if (el.matches('.match')) el.querySelectorAll('.mt').forEach((t) => play.unobserve(t));
+  };
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
-      if (!e.isIntersecting) return;
       const el = e.target.closest(e.target.dataset.moves);
-      io.unobserve(e.target);
-      if (el.matches('.dk-chat')) asked = performance.now();
-      if (el.matches('.dk-page')) {
-        if (asked === null) { chat && io.unobserve(chat); return; }
-        el.style.setProperty('--wait', Math.max(0, asked + 4000 - performance.now()) / 1000 + 's');
-      }
-      if (el.matches('.match')) { el.classList.add('is-held'); el.querySelectorAll('.mt').forEach((t) => play.observe(t)); }
-      el.classList.add('is-in');
+      if (!e.isIntersecting) { reset(el); return; }
+      if (e.target.dataset.skip) { delete e.target.dataset.skip; return; }
+      start(el);
     });
   }, { rootMargin: '0px 0px 6% 0px' });
-  watch.forEach(([seen, moves]) => document.querySelectorAll(seen).forEach((el) => {
-    if (moves === '.match' && el.getBoundingClientRect().top < innerHeight) return;
-    el.dataset.moves = moves;
-    io.observe(el);
-  }));
+  [['.usmap', '.usmap'], ['.match', '.match'], ['.dk-chat', '.dk-chat'], ['.dk-page svg', '.dk-page'], ['.term-body', '.term']]
+    .forEach(([seen, moves]) => document.querySelectorAll(seen).forEach((el) => {
+      el.dataset.moves = moves;
+      if (moves === '.match' && el.getBoundingClientRect().top < innerHeight) el.dataset.skip = '1';
+      io.observe(el);
+    }));
 })();
 (() => {
   const map = document.querySelector('.usmap');
