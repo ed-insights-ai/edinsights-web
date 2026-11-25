@@ -3,5 +3,5 @@ import { defineConfig } from "vite";
 export default defineConfig({
   base: "/",
   server: { port: 8080 },
-  build: { assetsInlineLimit: 0 },
+  build: { assetsInlineLimit: 0, cssMinify: false, minify: false },
 });
