@@ -438,6 +438,7 @@ a.tl:hover { color: var(--tl-ink); }
 .edi-foot { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.75rem 3.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 .edi-foot p { font-size: 0.8125rem; line-height: 1.55; color: var(--muted); }
 .edi-foot b { color: var(--ink-2); font-weight: 600; }
+.edi-foot .credit { grid-column: 1 / -1; margin-bottom: -0.5rem; font-family: var(--font-data); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
 .contact { display: inline-flex; align-items: center; gap: 0.25rem; }
 .contact .addr { color: var(--ink); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .contact .gh { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin: -10px -10px -10px 0; color: var(--muted); }
@@ -842,7 +843,8 @@ footer .wrap { padding-block: 1.75rem; }
         </div>
       </div>
       <div class="edi-foot">
-        <p><b>Who built this.</b> Daniel Scholl and Aitor Scholl, <span class="nw">Wylie, Texas</span>. EDInsights.AI is a father and son effort. Daniel is a Principal Software Engineer at Microsoft. Aitor studies data science and plays NCAA Division II soccer at Harding University.</p>
+        <p class="credit">Daniel Scholl and Aitor Scholl · <span class="nw">Wylie, Texas</span></p>
+        <p><b>Who built this.</b> EDInsights.AI is a father and son effort. Daniel is a Principal Software Engineer at Microsoft. Aitor studies data science and plays NCAA Division II soccer at Harding University.</p>
         <p><b>Work with us.</b> We like hearing from programs, coaches, instructors and students who want to try the tools early or build alongside us.</p>
       </div>
     </div>
