@@ -162,9 +162,10 @@ sup a { text-decoration: none; padding: 0 1px; color: var(--pencil); font-weight
   .mt .ev { transform-box: fill-box; transform-origin: center; }
   .match.is-in .mt .ph { animation: sweep 5.0s linear 0.3s; }
   .match.is-in .mt .ev { animation: pop 0.3s ease backwards; animation-delay: calc(var(--t) * 5.0s + 0.3s); }
-  .match.is-in .mt .glabel, .match.is-in .m-goal, .match.is-in .m-now { animation: appear 0.3s ease backwards; animation-delay: 1.88s; }
+  .match.is-in .mt .glabel, .match.is-in .m-goal { animation: appear 0.3s ease backwards; animation-delay: 1.88s; }
+  .match.is-in .m-now { animation: appear 0.01s linear 1.88s backwards; }
   .match.is-in .m-was { animation: hold 1.88s linear; }
-  .match.is-in .m-ft { animation: appear 0.4s ease 5.3s backwards; }
+  .match.is-in .m-ft { animation: appear 0.01s linear 5.3s backwards; }
   .m-clock { counter-reset: m var(--m); font-variant-numeric: tabular-nums; }
   .m-clock::after { content: "Replay " counter(m) "′"; }
   @keyframes clock { from { --m: 0; opacity: 1; } to { --m: 90; opacity: 1; } }
@@ -411,16 +412,16 @@ a.tl:hover { color: var(--tl-ink); }
 .principles p { color: var(--ink-2); font-size: 1rem; }
 .spectrum { display: flex; flex-direction: column; gap: 0.375rem; margin-top: 0.25rem; }
 .spectrum span { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-data); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-.edi-foot { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 1.5rem 3.5rem; align-items: start; padding: clamp(1.25rem, 3vw, 2rem); background: var(--field); border: 1px solid var(--line); border-radius: 4px; }
-.edi-foot > div { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
-.edi-foot h3 { font-weight: 700; font-size: 1.25rem; }
-.edi-foot p { color: var(--ink-2); font-size: 1rem; }
+.edi-foot { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 1.25rem 3.5rem; align-items: start; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.edi-foot > div { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+.edi-foot h3 { font-weight: 700; font-size: 1rem; }
+.edi-foot p { color: var(--ink-2); font-size: 0.9375rem; }
 .edi-foot .credit { margin-top: -0.375rem; font-family: var(--font-data); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-.contact { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; font-weight: 700; }
-.contact .addr { user-select: all; text-decoration: none; }
-.copy-btn { min-height: 44px; padding: 0 1rem; border: 1.5px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-size: 0.9375rem; font-weight: 500; cursor: pointer; }
-.copy-btn:hover { border-color: var(--pencil); color: var(--pencil); }
-.contact .gh { min-height: 44px; display: inline-flex; align-items: center; }
+.contact { display: flex; flex-wrap: wrap; align-items: center; gap: 0 0.5rem; font-size: 0.9375rem; }
+.contact .addr { font-weight: 600; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.contact .gh { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--muted); }
+.contact .gh:hover { color: var(--ink); }
+.contact .gh svg { width: 20px; height: 20px; }
 .todo { background: color-mix(in srgb, var(--pencil) 14%, transparent); padding: 0 0.25em; border-radius: 2px; }
 
 /* footer */
@@ -517,7 +518,7 @@ footer .wrap { padding-block: 1.75rem; }
           <h3>Touchline Desk</h3>
           <p class="what">Look up a player across past seasons, ask about your team, and open the box scores behind every answer.</p>
           <p class="for">For coaches, players and fans</p>
-          <div class="ai-role"><span class="head"><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span>AI: built in</span><p>Ask in plain words. An AI queries your own copy of the archive, and every number is recounted before you see it.</p></div>
+          <div class="ai-role"><span class="head"><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span>AI: built in</span><p>Ask in plain words. An AI queries your own copy of the archive, and every figure is recounted before you see it.</p></div>
           <div class="acts"><a class="go dk-btn" href="#early">Request early access <span aria-hidden="true">↓</span></a><a class="more" href="#desk">More ↓</a></div>
         </article>
         <article class="card c-ln">
@@ -625,7 +626,7 @@ footer .wrap { padding-block: 1.75rem; }
     <div class="wrap">
       <div class="copy dk-top">
         <p class="eyebrow">Touchline Desk · in development for Mac and Windows</p>
-        <h2 class="h-display">AI on the data, with every number recounted.</h2>
+        <h2 class="h-display">AI on the data, with every figure recounted.</h2>
         <p class="lede">Today, knowing how one defender's minutes changed after September means opening nineteen box scores. Desk answers in one sentence, with the nineteen box scores one click away.</p>
       </div>
       <div class="sheet dk shot" role="img" aria-label="Touchline Desk design prototype. A coach asks when the team scores and gives up goals. Desk counts every goal in 21 box scores and answers: most goals come right after halftime, and goals are given up late. A saved chart for Fort Hays State men shows goals by 15-minute period, scored 9, 7, 5, 12, 9 and 7, and given up 0, 0, 1, 1, 4 and 4.">
@@ -659,12 +660,11 @@ footer .wrap { padding-block: 1.75rem; }
         <ul class="facts">
           <li><span><b>The whole archive on your computer:</b> box scores for men and women in Division I and II since 2022, and two Division II men's conferences back to 2016.</span></li>
           <li><span><b>Bring your own AI.</b> Connect an account you already have and pick the model. Desk never sees a password.</span></li>
-          <li><span><b>A number that doesn't recount is cut.</b> Every figure in an answer is checked against the record it came from; a sentence that doesn't match is removed, not softened.</span></li>
+          <li><span><b>A number that doesn't recount is cut.</b> Every figure in an answer has to be found again in the record it came from; a sentence whose figure isn't is removed, not softened.</span></li>
           <li><span><b>Works without AI, too.</b> Pages, search, favorites and the published news need no AI account.</span></li>
         </ul>
-        <form class="early" id="early" action="mailto:founder@edinsights.ai" method="get" enctype="text/plain" novalidate>
+        <form class="early" id="early" action="mailto:founder@edinsights.ai?subject=Touchline%20Desk%20early%20access" method="post" enctype="text/plain" novalidate>
           <label for="early-email">Request early access to Desk</label>
-          <input type="hidden" name="subject" value="Touchline Desk early access">
           <div class="row">
             <input id="early-email" name="body" type="email" autocomplete="email" placeholder="you@school.edu">
             <button class="go" type="submit">Open email draft</button>
@@ -798,9 +798,8 @@ footer .wrap { padding-block: 1.75rem; }
           <h3>Work with us</h3>
           <p>We like hearing from programs, coaches, instructors and students who want to try the tools early or build alongside us.</p>
           <div class="contact">
-            <a class="addr" id="addr" href="mailto:founder@edinsights.ai">founder@edinsights.ai</a>
-            <button class="copy-btn" type="button" id="copy-addr" hidden>Copy address</button>
-            <a class="gh" href="https://github.com/ed-insights-ai">GitHub</a>
+            <a class="addr" href="mailto:founder@edinsights.ai">founder@edinsights.ai</a>
+            <a class="gh" href="https://github.com/ed-insights-ai" aria-label="EDInsights on GitHub" title="GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
       </div>
@@ -819,43 +818,51 @@ footer .wrap { padding-block: 1.75rem; }
 
 <script>
 (() => {
-  if (!matchMedia('(prefers-reduced-motion: no-preference)').matches || !document.getAnimations) return;
+  if (!matchMedia('(prefers-reduced-motion: no-preference)').matches || !document.getAnimations || !('IntersectionObserver' in window)) return;
   if (!(window.CSS && CSS.registerProperty)) document.documentElement.classList.add('no-clock');
-  const moments = [['.usmap', ['.usmap']], ['.match .m-time', ['.match']], ['.sheet.dk', ['.dk-chat', '.dk-page']], ['.term-body', ['.term']]]
-    .map(([box, parts]) => ({ box: document.querySelector(box), parts: parts.map((p) => document.querySelector(p)).filter(Boolean), anims: [], end: 0, cur: -1, goal: 0 }))
-    .filter((m) => m.box && m.parts.length);
-  const collect = (m) => {
-    m.anims = m.parts.flatMap((p) => p.getAnimations({ subtree: true }));
-    m.anims.forEach((a) => a.pause());
-    m.end = Math.max(0, ...m.anims.map((a) => a.effect.getComputedTiming().endTime));
-    m.cur = -1;
+  const moments = [['.usmap', '.usmap'], ['.match .m-time', '.match'], ['.dk-chat', '.dk-chat'], ['.dk-page svg', '.dk-page'], ['.term-body', '.term']]
+    .map(([box, part]) => ({ box: document.querySelector(box), part: document.querySelector(part), anims: [], state: 'armed', timer: 0 }))
+    .filter((m) => m.box && m.part);
+  const chat = moments.find((m) => m.part.matches('.dk-chat'));
+  const chart = moments.find((m) => m.part.matches('.dk-page'));
+  let asked = null;
+  const collect = (m) => { m.anims = m.part.getAnimations({ subtree: true }); };
+  const arm = (m) => { clearTimeout(m.timer); m.state = 'armed'; m.anims.forEach((a) => { a.pause(); a.currentTime = 0; }); };
+  const finish = (m) => { clearTimeout(m.timer); m.state = 'done'; m.anims.forEach((a) => a.finish()); };
+  const run = (m) => { m.state = 'playing'; m.anims.forEach((a) => { a.currentTime = 0; a.play(); }); };
+  const play = (m) => {
+    if (m.state !== 'armed') return;
+    if (m === chat) asked = performance.now();
+    if (m === chart) {
+      if (asked === null) { if (chat && chat.state === 'armed') finish(chat); run(m); return; }
+      m.state = 'waiting';
+      m.timer = setTimeout(() => run(m), Math.max(0, asked + 4000 - performance.now()));
+      return;
+    }
+    run(m);
   };
-  const dk = document.querySelector('.dk-page');
-  if (dk) dk.style.setProperty('--wait', '4s');
-  moments.forEach((m) => { m.parts.forEach((p) => p.classList.add('is-in')); collect(m); });
-  const goal = (m) => {
-    const r = m.box.getBoundingClientRect(), vh = innerHeight;
-    const from = r.height < vh * 0.5 ? vh * 0.95 - r.height : vh * 0.85, to = vh * 0.4 - r.height / 2;
-    return Math.min(1, Math.max(0, (from - r.top) / Math.max(1, from - to)));
-  };
-  let ticking = false;
-  const frame = () => {
-    ticking = false;
-    let moving = false;
-    moments.forEach((m) => {
-      const g = goal(m);
-      const next = m.cur < 0 ? g : m.cur + (g - m.cur) * 0.2;
-      m.cur = Math.abs(g - next) < 0.002 ? g : next;
-      if (m.cur !== g) moving = true;
-      const t = m.cur * m.end;
-      m.anims.forEach((a) => { a.currentTime = t; });
-    });
-    if (moving) tick();
-  };
-  const tick = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
-  addEventListener('scroll', tick, { passive: true });
-  addEventListener('resize', () => { moments.forEach(collect); tick(); });
-  tick();
+  moments.forEach((m) => { m.part.classList.add('is-in'); collect(m); arm(m); });
+  const byBox = new Map(moments.map((m) => [m.box, m]));
+  const trigger = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) play(byBox.get(e.target)); }), { rootMargin: '0px 0px -25% 0px' });
+  const away = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (e.isIntersecting) return;
+    const m = byBox.get(e.target);
+    if (m === chat) asked = null;
+    arm(m);
+  }));
+  moments.forEach((m) => { trigger.observe(m.box); away.observe(m.box); });
+  const rebuild = () => moments.forEach((m) => {
+    const was = m.state;
+    m.part.classList.remove('is-in'); void m.part.offsetWidth; m.part.classList.add('is-in');
+    collect(m);
+    if (was === 'armed') arm(m); else finish(m);
+  });
+  ['(max-width: 1000px)', '(max-width: 640px)'].forEach((q) => matchMedia(q).addEventListener('change', rebuild));
+  matchMedia('(prefers-reduced-motion: no-preference)').addEventListener('change', (e) => {
+    if (e.matches) return;
+    trigger.disconnect(); away.disconnect();
+    moments.forEach((m) => { clearTimeout(m.timer); m.anims.forEach((a) => a.cancel()); m.part.classList.remove('is-in'); });
+  });
 })();
 (() => {
   const map = document.querySelector('.usmap');
@@ -871,7 +878,7 @@ footer .wrap { padding-block: 1.75rem; }
       const d2 = dx * dx + dy * dy;
       if (d2 < bestD) { bestD = d2; best = c; }
     }
-    if (!best || best === picked) return;
+    if (!best || best === picked || +getComputedStyle(best).opacity < 0.5) return;
     if (picked) picked.classList.remove('picked');
     picked = best; best.classList.add('picked');
     out.textContent = best.querySelector('title').textContent;
@@ -881,14 +888,6 @@ footer .wrap { padding-block: 1.75rem; }
 })();
 
 (function () {
-  var btn = document.getElementById('copy-addr');
-  btn.hidden = false;
-  var addr = document.getElementById('addr');
-  btn.addEventListener('click', function () {
-    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy address'; }, 1800); };
-    var select = function () { var r = document.createRange(); r.selectNodeContents(addr); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected, press copy'; };
-    try { navigator.clipboard.writeText(addr.textContent).then(done, select); } catch (e) { select(); }
-  });
   var form = document.getElementById('early');
   var status = document.getElementById('early-status');
   form.addEventListener('submit', function (e) {
