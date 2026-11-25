@@ -1,70 +1,24 @@
-# EDInsights.AI Web Site
+# EDInsights.AI web site
 
-## Development Setup
+The home page for EDInsights.AI and the launch point for Touchline, Touchline Desk and Touchline Learn. It is served at [edinsights.ai](https://edinsights.ai).
 
-1. Clone the repository
-   ```sh
-   git clone <repository-url>
-   cd edinsights-web
-   ```
+The site is one static page, `index.html`, with its styles, scripts and map inline. Vite serves it in development and copies it, with everything in `public/`, into `dist/` for production. No framework.
 
-2. Install dependencies
-   ```sh
-   npm install
-   ```
+## Develop
 
-3. Start the development server
-   ```sh
-   npm run dev
-   ```
-   This will start the development server at http://localhost:8080
+```sh
+npm install
+npm run dev       # http://localhost:8080
+npm run build     # writes dist/
+npm run preview   # serves dist/
+```
 
-## Available Scripts
+## Deploy
 
-- `npm run dev` - Start the development server
-- `npm run build` - Build for production
-- `npm run lint` - Run ESLint
-- `npm run preview` - Preview the production build locally
-- `npm run deploy` - Deploy to GitHub Pages
+Every push to `main` builds the site and publishes `dist/` to GitHub Pages (`.github/workflows/deploy.yml`). The workflow writes the `CNAME` for edinsights.ai.
 
-## Updating Dependencies
+## Notes
 
-To keep the project dependencies up to date:
-
-1. Update the browserslist database:
-   ```sh
-   npx update-browserslist-db@latest
-   ```
-
-2. Update minor and patch versions (safer updates):
-   ```sh
-   npm update
-   ```
-
-3. For major version updates (may include breaking changes):
-   ```sh
-   npx npm-check-updates -u
-   npm install
-   ```
-
-## Technologies
-
-This project is built with:
-
-- Vite
-- React
-- TypeScript
-- shadcn/ui
-- Tailwind CSS
-
-## Deployment
-
-This project is configured to deploy to GitHub Pages. To deploy:
-
-1. Ensure your repository settings are configured for GitHub Pages deployment from the `gh-pages` branch.
-2. Run the deploy command:
-   ```sh
-   npm run deploy
-   ```
-
-Alternatively, pushing to the main branch will trigger automatic deployment via GitHub Actions.
+- Motion plays once as each part scrolls into view. With reduced motion, or without JavaScript, the page shows its final state.
+- The Desk early-access form opens the visitor's email app with a note to founder@edinsights.ai. Nothing is stored.
+- `404.html` sends old links, such as `/about`, to the home page.
