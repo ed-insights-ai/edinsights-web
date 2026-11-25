@@ -79,6 +79,7 @@ sup a { text-decoration: none; padding: 0 1px; color: var(--pencil); font-weight
 @media (prefers-reduced-motion: no-preference) {
   @keyframes ink { from { opacity: 0; } }
   .note.writing .w { animation: ink 0.28s ease-out backwards; animation-delay: calc(var(--i) * 0.09s + 0.85s); }
+  #ed-note.is-in .w { animation: ink 0.28s ease-out backwards; animation-delay: calc(var(--i) * 0.09s + 0.15s); }
   @keyframes pen { from { clip-path: inset(-60% 100% -60% -4%); } to { clip-path: inset(-60% -4% -60% -4%); } }
   .marked.writing svg { animation: pen 0.6s cubic-bezier(0.4, 0.1, 0.3, 1) 0.15s backwards; }
 }
@@ -839,7 +840,7 @@ footer .wrap { padding-block: 1.75rem; }
           <h2 class="edi-title">Ed. is short for Empowered Data</h2>
           <p class="lede">It's also how editors sign their notes, which suits a studio whose job is checking. Touchline is the first thing we've built this way.</p>
         </div>
-        <p class="note">AI where it earns its place. Plain code where it doesn't.&nbsp;<span class="nw">—Ed.</span></p>
+        <p class="note" id="ed-note">AI where it earns its place. Plain code where it doesn't.&nbsp;<span class="nw">—Ed.</span></p>
       </div>
       <div class="principles">
         <div>
@@ -882,7 +883,24 @@ footer .wrap { padding-block: 1.75rem; }
 (() => {
   if (!matchMedia('(prefers-reduced-motion: no-preference)').matches || !document.getAnimations || typeof IntersectionObserver !== 'function') return;
   if (!(window.CSS && CSS.registerProperty)) document.documentElement.classList.add('no-clock');
-  const moments = [['.usmap', '.usmap'], ['.match .m-time', '.match'], ['.dk-chat', '.dk-chat'], ['.dk-page svg', '.dk-page'], ['.term-body', '.term']]
+  const ed = document.getElementById('ed-note');
+  if (ed) {
+    let i = 0;
+    const walk = (el) => [...el.childNodes].forEach((n) => {
+      if (n.nodeType === 1) return walk(n);
+      if (n.nodeType !== 3) return;
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\S+\s*)/).forEach((p) => {
+        if (!p || /^\s+$/.test(p)) { if (p) frag.append(p); return; }
+        const w = document.createElement('span');
+        w.className = 'w'; w.style.setProperty('--i', i++); w.textContent = p;
+        frag.append(w);
+      });
+      n.replaceWith(frag);
+    });
+    walk(ed);
+  }
+  const moments = [['#ed-note', '#ed-note'], ['.usmap', '.usmap'], ['.match .m-time', '.match'], ['.dk-chat', '.dk-chat'], ['.dk-page svg', '.dk-page'], ['.term-body', '.term']]
     .map(([box, part]) => ({ box: document.querySelector(box), part: document.querySelector(part), anims: [], state: 'armed', timer: 0 }))
     .filter((m) => m.box && m.part);
   const chat = moments.find((m) => m.part.matches('.dk-chat'));
