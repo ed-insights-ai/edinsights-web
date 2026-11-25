@@ -10,6 +10,9 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://edinsights.ai/">
 <meta property="og:image" content="https://edinsights.ai/og.png">
+<meta property="og:image:alt" content="EDInsights.AI: Don't trust the numbers. Check them. Touchline, Touchline Desk and Touchline Learn.">
+<meta property="og:site_name" content="EDInsights.AI">
+<link rel="canonical" href="https://edinsights.ai/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#e5e9f0">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -104,7 +107,7 @@ sup a { text-decoration: none; padding: 0 1px; color: var(--pencil); font-weight
 /* launcher cards */
 .family .wrap { padding-block: 0 clamp(2.5rem, 5vw, 4rem); display: flex; flex-direction: column; gap: 1.25rem; }
 .family-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1.5rem; padding-top: 1rem; border-top: 2px solid var(--ink); }
-.family-head h2 { font-weight: 700; font-size: 1.375rem; letter-spacing: -0.015em; text-wrap: balance; }
+.family-head h2 { font-weight: 700; font-size: 1.375rem; letter-spacing: -0.015em; line-height: 1.2; text-wrap: balance; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem 1.25rem; }
 .card { display: grid; grid-row: span 6; grid-template-rows: subgrid; align-items: start; min-width: 0; padding: 1.25rem; background: var(--field); border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: 4px; }
 .record { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); gap: 1.5rem 2.5rem; align-items: center; margin-top: clamp(1rem, 2vw, 1.75rem); padding: clamp(1.25rem, 3vw, 2rem); background: var(--field); border: 1px solid var(--line); border-radius: 4px; }
@@ -162,7 +165,6 @@ sup a { text-decoration: none; padding: 0 1px; color: var(--pencil); font-weight
   .match.is-in .mt .glabel, .match.is-in .m-goal, .match.is-in .m-now { animation: appear 0.3s ease backwards; animation-delay: 1.88s; }
   .match.is-in .m-was { animation: hold 1.88s linear; }
   .match.is-in .m-ft { animation: appear 0.4s ease 5.3s backwards; }
-  .match.is-held .m-ft, .match.is-held .m-clock, .match.is-held .m-was, .match.is-held .m-now, .match.is-held .m-goal, .match.is-held .mt .ph, .match.is-held .mt .ev, .match.is-held .mt .glabel { animation-play-state: paused; }
   .m-clock { counter-reset: m var(--m); font-variant-numeric: tabular-nums; }
   .m-clock::after { content: "Replay " counter(m) "′"; }
   @keyframes clock { from { --m: 0; opacity: 1; } to { --m: 90; opacity: 1; } }
@@ -415,7 +417,7 @@ a.tl:hover { color: var(--tl-ink); }
 .edi-foot p { color: var(--ink-2); font-size: 1rem; }
 .edi-foot .credit { margin-top: -0.375rem; font-family: var(--font-data); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 .contact { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; font-weight: 700; }
-.contact .addr { user-select: all; }
+.contact .addr { user-select: all; text-decoration: none; }
 .copy-btn { min-height: 44px; padding: 0 1rem; border: 1.5px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); font: inherit; font-size: 0.9375rem; font-weight: 500; cursor: pointer; }
 .copy-btn:hover { border-color: var(--pencil); color: var(--pencil); }
 .contact .gh { min-height: 44px; display: inline-flex; align-items: center; }
@@ -490,7 +492,7 @@ footer .wrap { padding-block: 1.75rem; }
       <div class="side">
         <p class="lede"><strong>EDInsights.AI</strong> is an AI-infused analytics studio. We turn scattered public data into records people can check, with AI where it earns its place and plain code where it doesn't. Our first product line is <strong>Touchline</strong>, for college soccer.</p>
         <p class="note"><a href="#edinsights">Every standing and total we publish comes from code. <u>Hold us to it.</u></a>&nbsp;<span class="nw">—Ed.</span></p>
-        <nav class="jump" aria-label="Open a product"><a class="j-tl" href="https://dn1yvpcd2depb.cloudfront.net">Touchline ↗</a><a class="j-dk" href="#early">Desk list ↓</a><a class="j-ln" href="https://ed-insights-ai.github.io/touchline-learn/modules/01-collection/">Learn preview ↗</a></nav>
+        <nav class="jump" aria-label="Open a product"><a class="j-tl" href="https://dn1yvpcd2depb.cloudfront.net">Touchline ↗</a><a class="j-dk" href="#early">Desk access ↓</a><a class="j-ln" href="https://ed-insights-ai.github.io/touchline-learn/modules/01-collection/">Learn preview ↗</a></nav>
       </div>
     </div>
   </section>
@@ -516,7 +518,7 @@ footer .wrap { padding-block: 1.75rem; }
           <p class="what">Look up a player across past seasons, ask about your team, and open the box scores behind every answer.</p>
           <p class="for">For coaches, players and fans</p>
           <div class="ai-role"><span class="head"><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span>AI: built in</span><p>Ask in plain words. An AI queries your own copy of the archive, and every number is recounted before you see it.</p></div>
-          <div class="acts"><a class="go dk-btn" href="#early">Join the Desk list <span aria-hidden="true">↓</span></a><a class="more" href="#desk">More ↓</a></div>
+          <div class="acts"><a class="go dk-btn" href="#early">Request early access <span aria-hidden="true">↓</span></a><a class="more" href="#desk">More ↓</a></div>
         </article>
         <article class="card c-ln">
           <div class="status"><span class="chip dev"><i></i>In development</span><span>Free · Module 1 open</span></div>
@@ -563,7 +565,7 @@ footer .wrap { padding-block: 1.75rem; }
         <ul class="facts">
           <li><span><b>Scores, standings and the championship bracket</b>, with a written line on every conference.</span></li>
           <li><span><b>Gaps stay visible.</b> A match that hasn't been reported shows as missing, not guessed.</span></li>
-          <li><span><b>AI writes the journal, code serves the page.</b> Each morning, a model rewrites the journal for any conference whose data changed: the headline, findings and players to watch. A validator checks each finding that has a checkable basis against the data, drops any the data contradicts, and flags for review any headline number it can't vouch for. The stats are plain code on a static site, so pages load fast, cost very little to serve and still work if a journal is missing.</span></li>
+          <li><span><b>AI writes the journal, code serves the page.</b> Each morning, a model rewrites the journal for any conference whose data changed: the headline, findings and players to watch. A validator checks each finding that has a checkable basis against the data, drops any the data contradicts, and flags for review any headline number that isn't in the data behind it. The stats are plain code on a static site, so pages load fast, cost very little to serve and still work if a journal is missing.</span></li>
         </ul>
         <div class="acts"><a class="go tl-btn" href="https://dn1yvpcd2depb.cloudfront.net">Open Touchline <span aria-hidden="true">↗</span></a><span class="cap">Shown: Division II men, as published Nov 25.</span></div>
       </div>
@@ -657,16 +659,17 @@ footer .wrap { padding-block: 1.75rem; }
         <ul class="facts">
           <li><span><b>The whole archive on your computer:</b> box scores for men and women in Division I and II since 2022, and two Division II men's conferences back to 2016.</span></li>
           <li><span><b>Bring your own AI.</b> Connect an account you already have and pick the model. Desk never sees a password.</span></li>
-          <li><span><b>A number that doesn't recount is cut.</b> Every figure in an answer is checked against the box scores; a sentence that doesn't match is removed, not softened.</span></li>
+          <li><span><b>A number that doesn't recount is cut.</b> Every figure in an answer is checked against the record it came from; a sentence that doesn't match is removed, not softened.</span></li>
           <li><span><b>Works without AI, too.</b> Pages, search, favorites and the published news need no AI account.</span></li>
         </ul>
-        <form class="early" id="early" novalidate>
-          <label for="early-email">Get word when Desk is ready to try</label>
+        <form class="early" id="early" action="mailto:founder@edinsights.ai" method="get" enctype="text/plain" novalidate>
+          <label for="early-email">Request early access to Desk</label>
+          <input type="hidden" name="subject" value="Touchline Desk early access">
           <div class="row">
-            <input id="early-email" type="email" autocomplete="email" placeholder="you@school.edu">
-            <button class="go" type="submit">Notify me</button>
+            <input id="early-email" name="body" type="email" autocomplete="email" placeholder="you@school.edu">
+            <button class="go" type="submit">Open email draft</button>
           </div>
-          <p class="hint">One email when there's a build to try. Nothing else.</p>
+          <p class="hint">Opens a note to <a href="mailto:founder@edinsights.ai?subject=Touchline%20Desk%20early%20access">founder@edinsights.ai</a> in your email app. Press send, and we'll write when there's a build to try.</p>
           <p class="msg" id="early-status" role="status" hidden></p>
         </form>
       </div>
@@ -731,7 +734,7 @@ footer .wrap { padding-block: 1.75rem; }
         <div class="how">
           <div class="how-item">
             <h3>Runnable labs</h3>
-            <p>One Python lab per module, offline, on an invented conference shaped like the real data. Everyone gets the same output, and every line should start with <code>ok</code>.</p>
+            <p>One Python lab per module, offline, on an invented conference shaped like the real data. Everyone gets the same output, and one command runs every lab and checks each result.</p>
           </div>
           <div class="how-item">
             <h3>Learning with AI, on purpose</h3>
@@ -769,7 +772,7 @@ footer .wrap { padding-block: 1.75rem; }
       <div class="principles">
         <div>
           <h3>Code computes. The model writes.</h3>
-          <p>Standings and totals come from code. A model writes the words around those numbers from a brief that code prepared, and a validator checks the findings against the data and drops any the data contradicts before it ships. Any headline number it can't vouch for is flagged for review.</p>
+          <p>Standings and totals come from code. A model writes the words around those numbers from a brief that code prepared, and a validator checks the findings against the data and drops any the data contradicts before it ships. Any headline number that isn't in the data behind it is flagged for review.</p>
         </div>
         <div>
           <h3>As much AI as the job needs</h3>
@@ -788,15 +791,15 @@ footer .wrap { padding-block: 1.75rem; }
       <div class="edi-foot">
         <div>
           <h3>Who built this</h3>
-          <p class="credit">Daniel Scholl and Aitor Scholl · Wylie, Texas</p>
+          <p class="credit">Daniel Scholl and Aitor Scholl · <span class="nw">Wylie, Texas</span></p>
           <p>EDInsights.AI is a father and son effort. Daniel is a Principal Software Engineer at Microsoft. Aitor studies data science and plays NCAA Division II soccer at Harding University.</p>
         </div>
         <div>
           <h3>Work with us</h3>
           <p>We like hearing from programs, coaches, instructors and students who want to try the tools early or build alongside us.</p>
           <div class="contact">
-            <span class="addr" id="addr">founder@edinsights.ai</span>
-            <button class="copy-btn" type="button" id="copy-addr">Copy address</button>
+            <a class="addr" id="addr" href="mailto:founder@edinsights.ai">founder@edinsights.ai</a>
+            <button class="copy-btn" type="button" id="copy-addr" hidden>Copy address</button>
             <a class="gh" href="https://github.com/ed-insights-ai">GitHub</a>
           </div>
         </div>
@@ -816,48 +819,43 @@ footer .wrap { padding-block: 1.75rem; }
 
 <script>
 (() => {
-  if (!('IntersectionObserver' in window) || !matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
-  const chat = document.querySelector('.dk-chat');
+  if (!matchMedia('(prefers-reduced-motion: no-preference)').matches || !document.getAnimations) return;
   if (!(window.CSS && CSS.registerProperty)) document.documentElement.classList.add('no-clock');
-  let asked = null;
-  const play = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.intersectionRatio < 0.95) return;
-      e.target.closest('.match').classList.remove('is-held');
-      play.unobserve(e.target);
-    });
-  }, { threshold: 0.95 });
-  const start = (el) => {
-    if (el.matches('.dk-chat')) {
-      if (el.dataset.settled) return;
-      asked = performance.now();
-    }
-    if (el.matches('.dk-page')) {
-      if (asked === null) { if (chat) chat.dataset.settled = '1'; return; }
-      el.style.setProperty('--wait', Math.max(0, asked + 4000 - performance.now()) / 1000 + 's');
-    }
-    if (el.matches('.match')) { el.classList.add('is-held'); el.querySelectorAll('.mt').forEach((t) => play.observe(t)); }
-    el.classList.add('is-in');
+  const moments = [['.usmap', ['.usmap']], ['.match .m-time', ['.match']], ['.sheet.dk', ['.dk-chat', '.dk-page']], ['.term-body', ['.term']]]
+    .map(([box, parts]) => ({ box: document.querySelector(box), parts: parts.map((p) => document.querySelector(p)).filter(Boolean), anims: [], end: 0, cur: -1, goal: 0 }))
+    .filter((m) => m.box && m.parts.length);
+  const collect = (m) => {
+    m.anims = m.parts.flatMap((p) => p.getAnimations({ subtree: true }));
+    m.anims.forEach((a) => a.pause());
+    m.end = Math.max(0, ...m.anims.map((a) => a.effect.getComputedTiming().endTime));
+    m.cur = -1;
   };
-  const reset = (el) => {
-    el.classList.remove('is-in', 'is-held');
-    if (el.matches('.dk-chat')) { asked = null; delete el.dataset.settled; }
-    if (el.matches('.match')) el.querySelectorAll('.mt').forEach((t) => play.unobserve(t));
+  const dk = document.querySelector('.dk-page');
+  if (dk) dk.style.setProperty('--wait', '4s');
+  moments.forEach((m) => { m.parts.forEach((p) => p.classList.add('is-in')); collect(m); });
+  const goal = (m) => {
+    const r = m.box.getBoundingClientRect(), vh = innerHeight;
+    const from = r.height < vh * 0.5 ? vh * 0.95 - r.height : vh * 0.85, to = vh * 0.4 - r.height / 2;
+    return Math.min(1, Math.max(0, (from - r.top) / Math.max(1, from - to)));
   };
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      const el = e.target.closest(e.target.dataset.moves);
-      if (!e.isIntersecting) { reset(el); return; }
-      if (e.target.dataset.skip) { delete e.target.dataset.skip; return; }
-      start(el);
+  let ticking = false;
+  const frame = () => {
+    ticking = false;
+    let moving = false;
+    moments.forEach((m) => {
+      const g = goal(m);
+      const next = m.cur < 0 ? g : m.cur + (g - m.cur) * 0.2;
+      m.cur = Math.abs(g - next) < 0.002 ? g : next;
+      if (m.cur !== g) moving = true;
+      const t = m.cur * m.end;
+      m.anims.forEach((a) => { a.currentTime = t; });
     });
-  }, { rootMargin: '0px 0px 6% 0px' });
-  [['.usmap', '.usmap'], ['.match', '.match'], ['.dk-chat', '.dk-chat'], ['.dk-page svg', '.dk-page'], ['.term-body', '.term']]
-    .forEach(([seen, moves]) => document.querySelectorAll(seen).forEach((el) => {
-      el.dataset.moves = moves;
-      if (moves === '.match' && el.getBoundingClientRect().top < innerHeight) el.dataset.skip = '1';
-      io.observe(el);
-    }));
+    if (moving) tick();
+  };
+  const tick = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+  addEventListener('scroll', tick, { passive: true });
+  addEventListener('resize', () => { moments.forEach(collect); tick(); });
+  tick();
 })();
 (() => {
   const map = document.querySelector('.usmap');
@@ -884,6 +882,7 @@ footer .wrap { padding-block: 1.75rem; }
 
 (function () {
   var btn = document.getElementById('copy-addr');
+  btn.hidden = false;
   var addr = document.getElementById('addr');
   btn.addEventListener('click', function () {
     var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy address'; }, 1800); };
@@ -897,7 +896,7 @@ footer .wrap { padding-block: 1.75rem; }
     var email = document.getElementById('early-email').value.trim();
     var body = 'Please let me know when Touchline Desk is ready to try.' + (email ? '\n\nReach me at ' + email : '');
     location.href = 'mailto:founder@edinsights.ai?subject=' + encodeURIComponent('Touchline Desk early access') + '&body=' + encodeURIComponent(body);
-    status.textContent = 'Your email app should open with the note ready to send to founder@edinsights.ai.';
+    status.textContent = 'Your email app should now show the note. Press send to finish.';
     status.hidden = false;
   });
 })();
