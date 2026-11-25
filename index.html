@@ -426,7 +426,7 @@ a.tl:hover { color: var(--tl-ink); }
 .lnsec sup a { color: var(--ln-accent); }
 
 /* EDInsights panel */
-.edi .wrap { padding-block: clamp(3rem, 6vw, 5rem); display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 3rem); }
+.edi .wrap { padding-block: clamp(3rem, 6vw, 5rem) 1.5rem; display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 3rem); }
 .edi-head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 1.5rem 3.5rem; align-items: center; }
 .edi-head .copy { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
 .principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 2rem; }
@@ -478,6 +478,7 @@ footer .wrap { padding-block: 1.75rem; }
   .syllabus ol { columns: 1; }
   .jump { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .prod .wrap, .lnsec .wrap, .edi .wrap { padding-block: 2.5rem; }
+  .edi .wrap { padding-bottom: 1.25rem; }
   .uses { grid-template-columns: minmax(0, 1fr); }
   .usmap text { font-size: 34px; stroke-width: 8px; }
   .usmap .ring { stroke-width: 3; }
