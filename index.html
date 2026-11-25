@@ -71,6 +71,13 @@ sup a { text-decoration: none; padding: 0 1px; color: var(--pencil); font-weight
 .lede { color: var(--ink-2); text-wrap: pretty; }
 .note { font-family: var(--font-note); font-weight: 500; font-size: 1.6rem; line-height: 1.15; color: var(--pencil); transform: rotate(-1.5deg); }
 .note a { color: inherit; text-decoration: none; }
+.sec-note { font-size: 1.45rem; }
+.dksec .note { color: #f2a36d; }
+.note.pre .w { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes ink { from { opacity: 0; } }
+  .note.writing .w { animation: ink 0.28s ease-out backwards; animation-delay: calc(var(--i) * 0.09s + 0.3s); }
+}
 .note a u { text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .text-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
 .go { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 46px; padding: 0 1.25rem; border-radius: 999px; font-weight: 700; text-decoration: none; color: #ffffff; background: var(--btn, var(--ink-2)); border: 0; font-family: inherit; font-size: 1rem; cursor: pointer; }
@@ -181,6 +188,14 @@ sup a { text-decoration: none; padding: 0 1px; color: var(--pencil); font-weight
   .dk-chat.is-in .dk-answer { animation-delay: 3.45s; }
   .dk-chat.is-in .dk-para { animation-delay: 3.7s; }
   .term.is-in .term-body > * { animation: line 0.3s ease backwards; }
+  @keyframes k-hop { 0%, 100% { transform: none; } 12% { transform: translateY(2px) scale(1.07, 0.93); } 34% { transform: translateY(-15px) scale(0.96, 1.05); } 56% { transform: translateY(0) scale(1.06, 0.94); } 70% { transform: none; } 82% { transform: rotate(-5deg); } 92% { transform: rotate(3deg); } }
+  @keyframes k-shadow { 0%, 100% { transform: none; } 34% { transform: scale(0.6); opacity: 0.2; } 56% { transform: scale(1.1); } }
+  @keyframes k-thumb { 0%, 100% { opacity: 0; } 30%, 88% { opacity: 1; } }
+  @keyframes k-rest { 0%, 100% { opacity: 1; } 30%, 88% { opacity: 0; } }
+  .term.is-in .kick .k-hop { animation: k-hop 1.5s ease-in-out 2.4s; }
+  .term.is-in .kick .k-shadow { animation: k-shadow 1.5s ease-in-out 2.4s; }
+  .term.is-in .kick .k-thumb { animation: k-thumb 1.5s steps(1, end) 2.4s; }
+  .term.is-in .kick .k-rest { animation: k-rest 1.5s steps(1, end) 2.4s; }
   .term.is-in .term-body > .cmd { animation: none; }
   .term.is-in .term-body > :nth-child(1) { animation-delay: 0.10s; }
   .term.is-in .term-body > :nth-child(2) { animation-delay: 0.30s; }
@@ -362,10 +377,14 @@ a.tl:hover { color: var(--tl-ink); }
 .lnsec .eyebrow { color: var(--ln-accent); }
 .lnsec .lede { color: var(--ln-muted); }
 .ln-head { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: 1.5rem 3.5rem; align-items: center; }
-.term { margin: 0; display: flex; flex-direction: column; min-width: 0; background: #14201a; color: #dfe9e2; border-radius: 8px; overflow: hidden; box-shadow: 0 18px 40px -24px rgba(23, 33, 27, 0.6); font-family: var(--font-data); font-size: 0.78rem; line-height: 1.45; }
-.term-bar { display: flex; align-items: center; gap: 0.375rem; padding: 0.5rem 0.75rem; background: #1d2b24; color: #9fb3a6; font-size: 0.7rem; letter-spacing: 0.04em; }
+.term { position: relative; margin: 0; display: flex; flex-direction: column; min-width: 0; background: #14201a; color: #dfe9e2; border-radius: 8px; box-shadow: 0 18px 40px -24px rgba(23, 33, 27, 0.6); font-family: var(--font-data); font-size: 0.78rem; line-height: 1.45; }
+.term-bar { border-radius: 8px 8px 0 0; display: flex; align-items: center; gap: 0.375rem; padding: 0.5rem 0.75rem; background: #1d2b24; color: #9fb3a6; font-size: 0.7rem; letter-spacing: 0.04em; }
 .term-bar i { width: 9px; height: 9px; border-radius: 50%; background: #3c5146; }
 .term-bar span { margin-left: 0.5rem; }
+.kick { position: absolute; right: 1.5rem; bottom: calc(100% - 0.6rem); width: 112px; height: auto; overflow: visible; }
+.kick .k-thumb { opacity: 0; }
+.kick .k-hop, .kick .k-shadow { transform-box: fill-box; transform-origin: 50% 100%; }
+.kick .k-shadow { transform-origin: 50% 50%; }
 .term-body { display: flex; flex-direction: column; gap: 0.4rem; padding: 0.875rem 1rem 1rem; }
 .term-body .cmd { color: #9fb3a6; }
 .term-body .ttl { color: #ffffff; padding-bottom: 0.25rem; border-bottom: 1px solid #2e4037; }
@@ -431,6 +450,7 @@ footer .wrap { padding-block: 1.75rem; }
 .legal .wordmark { font-size: inherit; color: var(--ink); }
 
 @media (max-width: 1000px) {
+  .term { margin-top: 4.5rem; }
   .hero .wrap, .prod .wrap, .dksec .wrap, .ln-head, .ln-grid, .edi-head, .edi-foot { grid-template-columns: minmax(0, 1fr); }
   .cards { column-gap: 0.75rem; }
   .card { padding: 1rem; }
@@ -444,6 +464,8 @@ footer .wrap { padding-block: 1.75rem; }
   .uses .why { grid-column: 1 / -1; }
 }
 @media (max-width: 640px) {
+  .term { margin-top: 3.75rem; }
+  .kick { width: 84px; right: 1rem; }
   .cards { grid-template-columns: minmax(0, 1fr); max-width: 36rem; row-gap: 1rem; }
   .card { display: flex; flex-direction: column; gap: 0.75rem; padding: 1.25rem; }
   .card .acts { flex-direction: row; align-items: center; }
@@ -492,7 +514,30 @@ footer .wrap { padding-block: 1.75rem; }
       <h1>Don't trust the numbers.<br><span class="marked">Check them.<svg aria-hidden="true" viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M3 12 C 60 3, 118 17, 182 9 S 268 5, 297 12" fill="none" stroke="var(--pencil)" stroke-width="6" stroke-linecap="round" vector-effect="non-scaling-stroke"></path></svg></span></h1>
       <div class="side">
         <p class="lede"><strong>EDInsights.AI</strong> is an AI-infused analytics studio. We turn scattered public data into records people can check, with AI where it earns its place and plain code where it doesn't. Our first product line is <strong>Touchline</strong>, for college soccer.</p>
-        <p class="note"><a href="#edinsights">Every standing and total we publish comes from code. <u>Hold us to it.</u></a>&nbsp;<span class="nw">—Ed.</span></p>
+        <p class="note" id="hero-note"><a href="#edinsights">Every standing and total we publish comes from code. <u>Hold us to it.</u></a>&nbsp;<span class="nw">—Ed.</span></p>
+        <script>
+        (() => {
+          const note = document.getElementById('hero-note');
+          if (!matchMedia('(prefers-reduced-motion: no-preference)').matches || !document.fonts) return;
+          let i = 0;
+          const walk = (el) => [...el.childNodes].forEach((n) => {
+            if (n.nodeType === 1) return walk(n);
+            if (n.nodeType !== 3) return;
+            const frag = document.createDocumentFragment();
+            n.textContent.split(/(\s+)/).forEach((p) => {
+              if (!p || /^\s+$/.test(p)) { if (p) frag.append(p); return; }
+              const w = document.createElement('span');
+              w.className = 'w'; w.style.setProperty('--i', i++); w.textContent = p;
+              frag.append(w);
+            });
+            n.replaceWith(frag);
+          });
+          walk(note);
+          note.classList.add('pre');
+          const go = () => note.classList.replace('pre', 'writing');
+          Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1200))]).then(go);
+        })();
+        </script>
         <nav class="jump" aria-label="Open a product"><a class="j-tl" href="https://dn1yvpcd2depb.cloudfront.net">Touchline ↗</a><a class="j-dk" href="#early">Desk access ↓</a><a class="j-ln" href="https://ed-insights-ai.github.io/touchline-learn/modules/01-collection/">Learn preview ↗</a></nav>
       </div>
     </div>
@@ -563,6 +608,7 @@ footer .wrap { padding-block: 1.75rem; }
         <p class="eyebrow">Touchline · the season scorebook</p>
         <h2 class="h-display">Every score, every table, on any device, for free.</h2>
         <p class="lede">Touchline gathers what 1,012 teams publish on their schools' own websites and keeps the current season in one place, up to date on a phone between classes or a laptop in the press box.</p>
+        <p class="note sec-note">If it doesn't work on a phone in the stands, it doesn't ship.&nbsp;<span class="nw">—Ed.</span></p>
         <ul class="facts">
           <li><span><b>Scores, standings and the championship bracket</b>, with a written line on every conference.</span></li>
           <li><span><b>Gaps stay visible.</b> A match that hasn't been reported shows as missing, not guessed.</span></li>
@@ -628,6 +674,7 @@ footer .wrap { padding-block: 1.75rem; }
         <p class="eyebrow">Touchline Desk · in development for Mac and Windows</p>
         <h2 class="h-display">AI on the data, with every figure recounted.</h2>
         <p class="lede">Today, knowing how one defender's minutes changed after September means opening nineteen box scores. Desk answers in one sentence, with the nineteen box scores one click away.</p>
+        <p class="note sec-note">If it can't show its work, it doesn't get to answer.&nbsp;<span class="nw">—Ed.</span></p>
       </div>
       <div class="sheet dk shot" role="img" aria-label="Touchline Desk design prototype. A coach asks when the team scores and gives up goals. Desk counts every goal in 21 box scores and answers: most goals come right after halftime, and goals are given up late. A saved chart for Fort Hays State men shows goals by 15-minute period, scored 9, 7, 5, 12, 9 and 7, and given up 0, 0, 1, 1, 4 and 4.">
         <div class="dk-bar" aria-hidden="true"><i></i><i></i><i></i><span class="name">Touchline Desk</span><span class="proto">Design prototype</span></div>
@@ -696,8 +743,10 @@ footer .wrap { padding-block: 1.75rem; }
           <a class="go ln-btn" href="https://ed-insights-ai.github.io/touchline-learn/modules/01-collection/">Preview Module 1 <span aria-hidden="true">↗</span></a>
           <a class="text-link" href="https://ed-insights-ai.github.io/touchline-learn/">Course overview ↗</a>
           </div>
+          <p class="note sec-note">Use the AI. Then explain the answer back to me.&nbsp;<span class="nw">—Ed.</span></p>
         </div>
         <figure class="term" aria-label="Output of the Module 9 lab, which checks a drafted journal claim by claim">
+          <svg class="kick" viewBox="-75 -68 150 132" aria-hidden="true"><defs><clipPath id="kick-ball"><circle r="38"></circle></clipPath><radialGradient id="kick-shade" cx=".36" cy=".3" r=".8"><stop offset="0" stop-color="#ffffff"></stop><stop offset=".55" stop-color="#e8efea"></stop><stop offset="1" stop-color="#aebdb5"></stop></radialGradient><linearGradient id="kick-glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#15291f"></stop><stop offset="1" stop-color="#040a07"></stop></linearGradient></defs><ellipse class="k-shadow" cy="56" rx="23" ry="5" fill="#5fd38d" opacity=".42"></ellipse><g class="k-hop"><g class="k-rest"><circle r="62" fill="url(#kick-glow)" opacity="0.45"/><ellipse cy="56" rx="23" ry="5" fill="#5fd38d" opacity=".42"/><circle r="38" fill="url(#kick-shade)"/><g clip-path="url(#kick-ball)"><path d="M0.0 -8.7L0.0 -13.6L0.0 -18.3L0.0 -22.6M12.4 0.3L16.8 -1.4L21.1 -3.1L24.8 -4.7M-7.7 14.8L-10.4 18.3L-13.0 21.5L-15.3 24.3M7.7 14.8L10.4 18.3L13.0 21.5L15.3 24.3M-12.4 0.3L-16.8 -1.4L-21.1 -3.1L-24.8 -4.7M12.4 -27.6L16.8 -25.0L21.1 -22.0L24.8 -18.6M-7.7 -35.6L-9.9 -35.9L-12.1 -35.8L-14.1 -35.3M-12.4 -27.6L-16.8 -25.0L-21.1 -22.0L-24.8 -18.6M7.7 -35.6L9.9 -35.9L12.1 -35.8L14.1 -35.3M37.2 -3.2L37.6 -2.2L37.9 -1.1L38.0 -0.0M32.5 4.8L31.5 9.8L29.9 14.7L27.7 19.3M32.5 -17.7L31.8 -19.9L30.9 -22.0L29.6 -23.8M-29.6 -23.8L-30.9 -22.0L-31.8 -19.9L-32.5 -17.7M29.6 23.8L29.0 24.5L28.4 25.2L27.7 25.7M-7.7 33.8L-2.6 34.4L2.6 34.4L7.7 33.8M-27.7 19.3L-29.9 14.7L-31.5 9.8L-32.5 4.8M-15.3 34.7L-14.9 34.9L-14.5 35.1L-14.1 35.3M-27.7 25.7L-28.4 25.2L-29.0 24.5L-29.6 23.8M15.3 34.7L14.9 34.9L14.5 35.1L14.1 35.3M-37.2 -3.2L-37.6 -2.2L-37.9 -1.1L-38.0 0.0" fill="none" stroke="#a3b4ab" stroke-width="1.5"/><path d="M12.4 0.3L11.4 4.0L10.2 7.7L9.0 11.3L7.7 14.8L3.9 15.0L0.0 15.1L-3.9 15.0L-7.7 14.8L-9.0 11.3L-10.2 7.7L-11.4 4.0L-12.4 0.3L-9.4 -2.0L-6.3 -4.3L-3.1 -6.5L0.0 -8.7L3.1 -6.5L6.3 -4.3L9.4 -2.0ZM12.4 -27.6L9.4 -26.7L6.3 -25.6L3.1 -24.2L0.0 -22.6L-3.1 -24.2L-6.3 -25.6L-9.4 -26.7L-12.4 -27.6L-11.4 -30.0L-10.2 -32.2L-9.0 -34.1L-7.7 -35.6L-3.9 -36.2L0.0 -36.3L3.9 -36.2L7.7 -35.6L9.0 -34.1L10.2 -32.2L11.4 -30.0ZM32.5 4.8L31.0 2.5L29.2 0.1L27.1 -2.4L24.8 -4.7L25.2 -8.3L25.3 -11.9L25.2 -15.4L24.8 -18.6L27.1 -18.7L29.2 -18.5L31.0 -18.2L32.5 -17.7L34.2 -14.3L35.6 -10.7L36.6 -6.9L37.2 -3.2L36.6 -1.2L35.6 0.8L34.2 2.9ZM-27.7 19.3L-25.0 20.9L-22.0 22.2L-18.7 23.4L-15.3 24.3L-13.6 27.1L-11.7 29.6L-9.7 31.9L-7.7 33.8L-9.7 34.5L-11.7 34.9L-13.6 35.0L-15.3 34.7L-18.7 33.0L-22.0 30.8L-25.0 28.4L-27.7 25.7L-28.2 24.5L-28.3 23.0L-28.2 21.2ZM7.7 33.8L9.7 31.9L11.7 29.6L13.6 27.1L15.3 24.3L18.7 23.4L22.0 22.2L25.0 20.9L27.7 19.3L28.2 21.2L28.3 23.0L28.2 24.5L27.7 25.7L25.0 28.4L22.0 30.8L18.7 33.0L15.3 34.7L13.6 35.0L11.7 34.9L9.7 34.5ZM-24.8 -18.6L-25.2 -15.4L-25.3 -11.9L-25.2 -8.3L-24.8 -4.7L-27.1 -2.4L-29.2 0.1L-31.0 2.5L-32.5 4.8L-34.2 2.9L-35.6 0.8L-36.6 -1.2L-37.2 -3.2L-36.6 -6.9L-35.6 -10.7L-34.2 -14.3L-32.5 -17.7L-31.0 -18.2L-29.2 -18.5L-27.1 -18.7Z" fill="#16241d" stroke="#16241d" stroke-width="1.2" stroke-linejoin="round"/><path d="M33-19A38 38 0 0 1-19 33A47 47 0 0 0 33-19Z" fill="#06100b" opacity=".2"/><path d="M-31-14A34 34 0 0 1-13-31.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".75"/></g><circle r="38" fill="none" stroke="#0a1510" stroke-width="3.6"/><path d="M-32.3 -8.4Q-45.6 -9.4 -47.0 11.0" fill="none" stroke="#0a1510" stroke-width="10" stroke-linecap="round"/><path d="M-32.3 -8.4Q-45.6 -9.4 -47.0 11.0" fill="none" stroke="#cdd8d2" stroke-width="4.6" stroke-linecap="round"/><circle cx="-32.3" cy="-8.4" r="5" fill="#8fa39a" stroke="#0a1510" stroke-width="2.6"/><circle cx="-33.5" cy="-9.8" r="1.5" fill="#fff" opacity=".7"/><path d="M32.3 -8.4Q45.6 -9.4 47.0 11.0" fill="none" stroke="#0a1510" stroke-width="10" stroke-linecap="round"/><path d="M32.3 -8.4Q45.6 -9.4 47.0 11.0" fill="none" stroke="#cdd8d2" stroke-width="4.6" stroke-linecap="round"/><circle cx="32.3" cy="-8.4" r="5" fill="#8fa39a" stroke="#0a1510" stroke-width="2.6"/><circle cx="31.1" cy="-9.8" r="1.5" fill="#fff" opacity=".7"/><g transform="translate(-47.0 11.0) rotate(94.0) scale(1 -1)" stroke-linejoin="round"><path d="M5 4C5 11.5 12 13 13 9 13.5 6.5 11 5 8 5.5Z" fill="#f4faf5" stroke="#0a1510" stroke-width="2.8"/><path d="M1-6.5C6-9.5 15.5-8 16.5 0 15.5 8 6 9.5 1 6.5Z" fill="#f4faf5" stroke="#0a1510" stroke-width="3"/><rect x="-4" y="-5.5" width="5.5" height="11" rx="2" fill="#5fd38d" stroke="#0a1510" stroke-width="2.2"/></g><g transform="translate(47.0 11.0) rotate(86.0) scale(1 1)" stroke-linejoin="round"><path d="M5 4C5 11.5 12 13 13 9 13.5 6.5 11 5 8 5.5Z" fill="#f4faf5" stroke="#0a1510" stroke-width="2.8"/><path d="M1-6.5C6-9.5 15.5-8 16.5 0 15.5 8 6 9.5 1 6.5Z" fill="#f4faf5" stroke="#0a1510" stroke-width="3"/><rect x="-4" y="-5.5" width="5.5" height="11" rx="2" fill="#5fd38d" stroke="#0a1510" stroke-width="2.2"/></g><path d="M-23.5-5C-23.5-11.5-19.5-13.6-11-14.4-4-15 4-15 11-14.4 19.5-13.6 23.5-11.5 23.5-5L23.5 9C23.5 15.5 19.5 18 11 18.8 4 19.4-4 19.4-11 18.8-19.5 18-23.5 15.5-23.5 9Z" fill="url(#kick-glass)" stroke="#0a1510" stroke-width="3.2"/><path d="M-23.5-5C-23.5-11.5-19.5-13.6-11-14.4-4-15 4-15 11-14.4 19.5-13.6 23.5-11.5 23.5-5L23.5 9C23.5 15.5 19.5 18 11 18.8 4 19.4-4 19.4-11 18.8-19.5 18-23.5 15.5-23.5 9Z" transform="translate(0 .3) scale(.89 .85)" fill="none" stroke="#31453b" stroke-width="1.6"/><path d="M-23.5-5C-23.5-11.5-19.5-13.6-11-14.4-4-15 4-15 11-14.4 19.5-13.6 23.5-11.5 23.5-5L23.5 9C23.5 15.5 19.5 18 11 18.8 4 19.4-4 19.4-11 18.8-19.5 18-23.5 15.5-23.5 9Z" fill="none" stroke="#5fd38d" stroke-width="0.6" opacity="0.35"/><path d="M-18-11.5l9-1.2-8 27-5-4zM-4-13.5l4-.4-9 31-3.5-.4z" fill="#fff" opacity=".07"/><path d="M-15.2 4.5q4.8-8.8 9.6 0M5.6 4.5q4.8-8.8 9.6 0M-7 10.5q7 6 14 0" stroke="#5fd38d" stroke-width="8" fill="none" stroke-linecap="round" opacity=".16"/><path d="M-15.2 4.5q4.8-8.8 9.6 0M5.6 4.5q4.8-8.8 9.6 0M-7 10.5q7 6 14 0" stroke="#5fd38d" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M14.5-11q5 .8 6 5.5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".5"/></g><g class="k-thumb"><circle r="62" fill="url(#kick-glow)" opacity="0.45"/><ellipse cy="56" rx="23" ry="5" fill="#5fd38d" opacity=".42"/><circle r="38" fill="url(#kick-shade)"/><g clip-path="url(#kick-ball)"><path d="M0.0 -8.7L0.0 -13.6L0.0 -18.3L0.0 -22.6M12.4 0.3L16.8 -1.4L21.1 -3.1L24.8 -4.7M-7.7 14.8L-10.4 18.3L-13.0 21.5L-15.3 24.3M7.7 14.8L10.4 18.3L13.0 21.5L15.3 24.3M-12.4 0.3L-16.8 -1.4L-21.1 -3.1L-24.8 -4.7M12.4 -27.6L16.8 -25.0L21.1 -22.0L24.8 -18.6M-7.7 -35.6L-9.9 -35.9L-12.1 -35.8L-14.1 -35.3M-12.4 -27.6L-16.8 -25.0L-21.1 -22.0L-24.8 -18.6M7.7 -35.6L9.9 -35.9L12.1 -35.8L14.1 -35.3M37.2 -3.2L37.6 -2.2L37.9 -1.1L38.0 -0.0M32.5 4.8L31.5 9.8L29.9 14.7L27.7 19.3M32.5 -17.7L31.8 -19.9L30.9 -22.0L29.6 -23.8M-29.6 -23.8L-30.9 -22.0L-31.8 -19.9L-32.5 -17.7M29.6 23.8L29.0 24.5L28.4 25.2L27.7 25.7M-7.7 33.8L-2.6 34.4L2.6 34.4L7.7 33.8M-27.7 19.3L-29.9 14.7L-31.5 9.8L-32.5 4.8M-15.3 34.7L-14.9 34.9L-14.5 35.1L-14.1 35.3M-27.7 25.7L-28.4 25.2L-29.0 24.5L-29.6 23.8M15.3 34.7L14.9 34.9L14.5 35.1L14.1 35.3M-37.2 -3.2L-37.6 -2.2L-37.9 -1.1L-38.0 0.0" fill="none" stroke="#a3b4ab" stroke-width="1.5"/><path d="M12.4 0.3L11.4 4.0L10.2 7.7L9.0 11.3L7.7 14.8L3.9 15.0L0.0 15.1L-3.9 15.0L-7.7 14.8L-9.0 11.3L-10.2 7.7L-11.4 4.0L-12.4 0.3L-9.4 -2.0L-6.3 -4.3L-3.1 -6.5L0.0 -8.7L3.1 -6.5L6.3 -4.3L9.4 -2.0ZM12.4 -27.6L9.4 -26.7L6.3 -25.6L3.1 -24.2L0.0 -22.6L-3.1 -24.2L-6.3 -25.6L-9.4 -26.7L-12.4 -27.6L-11.4 -30.0L-10.2 -32.2L-9.0 -34.1L-7.7 -35.6L-3.9 -36.2L0.0 -36.3L3.9 -36.2L7.7 -35.6L9.0 -34.1L10.2 -32.2L11.4 -30.0ZM32.5 4.8L31.0 2.5L29.2 0.1L27.1 -2.4L24.8 -4.7L25.2 -8.3L25.3 -11.9L25.2 -15.4L24.8 -18.6L27.1 -18.7L29.2 -18.5L31.0 -18.2L32.5 -17.7L34.2 -14.3L35.6 -10.7L36.6 -6.9L37.2 -3.2L36.6 -1.2L35.6 0.8L34.2 2.9ZM-27.7 19.3L-25.0 20.9L-22.0 22.2L-18.7 23.4L-15.3 24.3L-13.6 27.1L-11.7 29.6L-9.7 31.9L-7.7 33.8L-9.7 34.5L-11.7 34.9L-13.6 35.0L-15.3 34.7L-18.7 33.0L-22.0 30.8L-25.0 28.4L-27.7 25.7L-28.2 24.5L-28.3 23.0L-28.2 21.2ZM7.7 33.8L9.7 31.9L11.7 29.6L13.6 27.1L15.3 24.3L18.7 23.4L22.0 22.2L25.0 20.9L27.7 19.3L28.2 21.2L28.3 23.0L28.2 24.5L27.7 25.7L25.0 28.4L22.0 30.8L18.7 33.0L15.3 34.7L13.6 35.0L11.7 34.9L9.7 34.5ZM-24.8 -18.6L-25.2 -15.4L-25.3 -11.9L-25.2 -8.3L-24.8 -4.7L-27.1 -2.4L-29.2 0.1L-31.0 2.5L-32.5 4.8L-34.2 2.9L-35.6 0.8L-36.6 -1.2L-37.2 -3.2L-36.6 -6.9L-35.6 -10.7L-34.2 -14.3L-32.5 -17.7L-31.0 -18.2L-29.2 -18.5L-27.1 -18.7Z" fill="#16241d" stroke="#16241d" stroke-width="1.2" stroke-linejoin="round"/><path d="M33-19A38 38 0 0 1-19 33A47 47 0 0 0 33-19Z" fill="#06100b" opacity=".2"/><path d="M-31-14A34 34 0 0 1-13-31.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".75"/></g><circle r="38" fill="none" stroke="#0a1510" stroke-width="3.6"/><path d="M-32.3 -8.4Q-45.6 -9.4 -47.0 11.0" fill="none" stroke="#0a1510" stroke-width="10" stroke-linecap="round"/><path d="M-32.3 -8.4Q-45.6 -9.4 -47.0 11.0" fill="none" stroke="#cdd8d2" stroke-width="4.6" stroke-linecap="round"/><circle cx="-32.3" cy="-8.4" r="5" fill="#8fa39a" stroke="#0a1510" stroke-width="2.6"/><circle cx="-33.5" cy="-9.8" r="1.5" fill="#fff" opacity=".7"/><path d="M32.3 -8.4Q54.0 -6.4 54.0 -12.0" fill="none" stroke="#0a1510" stroke-width="10" stroke-linecap="round"/><path d="M32.3 -8.4Q54.0 -6.4 54.0 -12.0" fill="none" stroke="#cdd8d2" stroke-width="4.6" stroke-linecap="round"/><circle cx="32.3" cy="-8.4" r="5" fill="#8fa39a" stroke="#0a1510" stroke-width="2.6"/><circle cx="31.1" cy="-9.8" r="1.5" fill="#fff" opacity=".7"/><g transform="translate(-47.0 11.0) rotate(94.0) scale(1 -1)" stroke-linejoin="round"><path d="M5 4C5 11.5 12 13 13 9 13.5 6.5 11 5 8 5.5Z" fill="#f4faf5" stroke="#0a1510" stroke-width="2.8"/><path d="M1-6.5C6-9.5 15.5-8 16.5 0 15.5 8 6 9.5 1 6.5Z" fill="#f4faf5" stroke="#0a1510" stroke-width="3"/><rect x="-4" y="-5.5" width="5.5" height="11" rx="2" fill="#5fd38d" stroke="#0a1510" stroke-width="2.2"/></g><g transform="translate(54.0 -22.0)"><rect x="-5.5" y="6.5" width="11" height="5.5" rx="2" fill="#5fd38d" stroke="#0a1510" stroke-width="2.2"/><path d="M-4-5L-4.6-16.5" stroke="#0a1510" stroke-width="13.6" stroke-linecap="round"/><rect x="-9.5" y="-9" width="19.5" height="17" rx="6.5" fill="#f4faf5" stroke="#0a1510" stroke-width="3"/><path d="M-4-3L-4.6-16.5" stroke="#f4faf5" stroke-width="7.6" stroke-linecap="round"/><path d="M1.5-3.6h5M1.5 .6h5M2 4.8h4" stroke="#0a1510" stroke-width="1.6" stroke-linecap="round"/></g><path d="M-23.5-5C-23.5-11.5-19.5-13.6-11-14.4-4-15 4-15 11-14.4 19.5-13.6 23.5-11.5 23.5-5L23.5 9C23.5 15.5 19.5 18 11 18.8 4 19.4-4 19.4-11 18.8-19.5 18-23.5 15.5-23.5 9Z" fill="url(#kick-glass)" stroke="#0a1510" stroke-width="3.2"/><path d="M-23.5-5C-23.5-11.5-19.5-13.6-11-14.4-4-15 4-15 11-14.4 19.5-13.6 23.5-11.5 23.5-5L23.5 9C23.5 15.5 19.5 18 11 18.8 4 19.4-4 19.4-11 18.8-19.5 18-23.5 15.5-23.5 9Z" transform="translate(0 .3) scale(.89 .85)" fill="none" stroke="#31453b" stroke-width="1.6"/><path d="M-23.5-5C-23.5-11.5-19.5-13.6-11-14.4-4-15 4-15 11-14.4 19.5-13.6 23.5-11.5 23.5-5L23.5 9C23.5 15.5 19.5 18 11 18.8 4 19.4-4 19.4-11 18.8-19.5 18-23.5 15.5-23.5 9Z" fill="none" stroke="#5fd38d" stroke-width="0.6" opacity="0.35"/><path d="M-18-11.5l9-1.2-8 27-5-4zM-4-13.5l4-.4-9 31-3.5-.4z" fill="#fff" opacity=".07"/><path d="M-15.2 4.5q4.8-8.8 9.6 0M5.6 4.5q4.8-8.8 9.6 0M-7 10.5q7 6 14 0" stroke="#5fd38d" stroke-width="8" fill="none" stroke-linecap="round" opacity=".16"/><path d="M-15.2 4.5q4.8-8.8 9.6 0M5.6 4.5q4.8-8.8 9.6 0M-7 10.5q7 6 14 0" stroke="#5fd38d" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M14.5-11q5 .8 6 5.5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".5"/></g></g></svg>
           <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>Module 9 lab · an invented conference</span></div>
           <div class="term-body">
             <span class="cmd">$ python labs/m09_claims.py</span>
