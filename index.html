@@ -70,7 +70,7 @@ sup a { text-decoration: none; padding: 0 1px; color: var(--pencil); font-weight
 .h-display { font-weight: 700; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.03; letter-spacing: -0.03em; text-wrap: balance; }
 .h-display .sub { display: block; margin-top: 0.15em; font-weight: 400; font-size: 0.82em; letter-spacing: -0.02em; opacity: 0.82; }
 .lede { color: var(--ink-2); text-wrap: pretty; }
-.note { font-family: var(--font-note); font-weight: 500; font-size: 1.6rem; line-height: 1.15; color: var(--pencil); transform: rotate(-1.5deg); }
+.note { text-wrap: balance; font-family: var(--font-note); font-weight: 500; font-size: 1.6rem; line-height: 1.15; color: var(--pencil); transform: rotate(-1.5deg); }
 .note a { color: inherit; text-decoration: none; }
 .sec-note { font-size: 1.45rem; }
 .dksec .note { color: #f2a36d; }
@@ -448,7 +448,9 @@ a.tl:hover { color: var(--tl-ink); }
 .edi-foot { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.75rem 3.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 .edi-foot p { font-size: 0.8125rem; line-height: 1.55; color: var(--muted); }
 .edi-foot b { color: var(--ink-2); font-weight: 600; }
-.edi-foot .credit { grid-column: 1 / -1; margin-bottom: -0.5rem; font-family: var(--font-data); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.edi-foot b a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.legal .mid { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; text-align: center; }
+.legal .credit { font-family: var(--font-data); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
 .contact { display: inline-flex; align-items: center; gap: 0.25rem; }
 .contact .addr { color: var(--ink); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .contact .gh { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin: -10px -10px -10px 0; color: var(--muted); }
@@ -477,6 +479,7 @@ footer .wrap { padding-block: 1.75rem; }
   .uses .why { grid-column: 1 / -1; }
 }
 @media (max-width: 640px) {
+  .legal .mid { align-items: flex-start; text-align: left; }
   .m-burst.wd { display: none; }
   .m-burst.ph { display: block; left: 70%; top: 58%; font-size: 0.95rem; transform: translate(-50%, -50%) rotate(-9deg); }
   .term { margin-top: 3.75rem; }
@@ -540,7 +543,7 @@ footer .wrap { padding-block: 1.75rem; }
             if (n.nodeType === 1) return walk(n);
             if (n.nodeType !== 3) return;
             const frag = document.createDocumentFragment();
-            n.textContent.split(/(\s+)/).forEach((p) => {
+            n.textContent.split(/(\S+\s*)/).forEach((p) => {
               if (!p || /^\s+$/.test(p)) { if (p) frag.append(p); return; }
               const w = document.createElement('span');
               w.className = 'w'; w.style.setProperty('--i', i++); w.textContent = p;
@@ -627,7 +630,7 @@ footer .wrap { padding-block: 1.75rem; }
         <p class="lede">Touchline gathers what 1,012 teams publish on their schools' own websites and keeps the current season in one place, up to date on a phone between classes or a laptop in the press box.</p>
         <p class="note sec-note">If it doesn't work on a phone in the stands, it doesn't ship.&nbsp;<span class="nw">—Ed.</span></p>
         <ul class="facts">
-          <li><span><b>Scores, standings and the championship bracket</b>, with a written line on every conference.</span></li>
+          <li><span><b>Scores, standings, player sheets and the championship bracket</b>, with a written line on every conference.</span></li>
           <li><span><b>Gaps stay visible.</b> A match that hasn't been reported shows as missing, not guessed.</span></li>
           <li><span><b>AI writes the journal, code serves the page.</b> Each morning, a model rewrites the journal for any conference whose data changed: the headline, findings and players to watch. A validator checks each finding that has a checkable basis against the data, drops any the data contradicts, and flags for review any headline number that isn't in the data behind it. The stats are plain code on a static site, so pages load fast, cost very little to serve and still work if a journal is missing.</span></li>
         </ul>
@@ -729,7 +732,8 @@ footer .wrap { padding-block: 1.75rem; }
           <li><span><b>A number that doesn't recount is cut.</b> Every figure in an answer has to be found again in the record it came from; a sentence whose figure isn't is removed, not softened.</span></li>
           <li><span><b>Works without AI, too.</b> Pages, search, favorites and the published news need no AI account.</span></li>
         </ul>
-        <form class="early" id="early" action="mailto:founder@edinsights.ai?subject=Touchline%20Desk%20early%20access" method="post" enctype="text/plain" novalidate>
+        <form class="early" id="early" novalidate>
+          <noscript><style>.early .row { display: none; }</style></noscript>
           <label for="early-email">Request early access to Desk</label>
           <div class="row">
             <input id="early-email" name="body" type="email" autocomplete="email" placeholder="you@school.edu">
@@ -856,9 +860,8 @@ footer .wrap { padding-block: 1.75rem; }
         </div>
       </div>
       <div class="edi-foot">
-        <p class="credit">Daniel Scholl and Aitor Scholl · <span class="nw">Wylie, Texas</span></p>
         <p><b>Who built this.</b> EDInsights.AI is a father and son effort. Daniel is a Principal Software Engineer at Microsoft. Aitor studies data science and plays NCAA Division II soccer at Harding University.</p>
-        <p><b>Work with us.</b> We like hearing from programs, coaches, instructors and students who want to try the tools early or build alongside us.</p>
+        <p><b><a href="mailto:founder@edinsights.ai">Work with us.</a></b> We like hearing from programs, coaches, instructors and students who want to try the tools early or build alongside us.</p>
       </div>
     </div>
   </section>
@@ -868,7 +871,7 @@ footer .wrap { padding-block: 1.75rem; }
   <div class="wrap">
     <div class="legal">
       <span><span class="wordmark"><b>ED</b>Insights<b class="ai">.AI</b></span> · © 2026</span>
-      <span class="indep">Touchline is independent and not affiliated with the NCAA.</span>
+      <span class="mid"><span class="credit">Daniel Scholl and Aitor Scholl · <span class="nw">Wylie, Texas</span></span><span>Touchline is independent and not affiliated with the NCAA.</span></span>
       <span class="contact"><a class="addr" href="mailto:founder@edinsights.ai">founder@edinsights.ai</a><a class="gh" href="https://github.com/ed-insights-ai" aria-label="EDInsights on GitHub" title="GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a></span>
     </div>
   </div>
